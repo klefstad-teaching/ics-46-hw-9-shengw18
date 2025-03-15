@@ -35,6 +35,12 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
             }
         }
     }
+    // check distance find the error
+    cout << "Final distances from source " << source << ":\n";
+    for (int i = 0; i < n; i++) {
+        cout << "To " << i << ": " << (distances[i] == INF ? "INF" : to_string(distances[i])) << endl;
+    }
+
     return distances;
 }
 
