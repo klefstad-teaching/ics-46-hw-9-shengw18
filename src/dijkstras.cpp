@@ -78,5 +78,5 @@ void print_path(const vector<int>& path, int total) {
         }
         cout << " \n";
     }
-    cout << "Total cost is " << total << endl;
+    cout << "\nTotal cost is " << total << endl;
 }
