@@ -75,6 +75,28 @@ void load_words(set<string> & word_list, const string& file_name) {
     }
 }
 
+bool edit_distance_within(const std::string& str1, const std::string& str2, int d) {
+    int len1 = str1.size(), len2 = str2.size();
+    if (abs(len1 - len2) > d) return false;
+
+    int i = 0, j = 0, diff_count = 0;
+    while (i < len1 && j < len2) {
+        if (str1[i] != str2[j]) {
+            if (++diff_count > d) {
+                return false};
+            if (len1 > len2) {
+                i++;}
+            else if (len1 < len2) {
+                j++;}
+            else {
+                i++; j++;}
+        } else {
+            i++; j++;
+        }
+    }
+    return diff_count + abs(len1 - i - (len2 - j)) <= d;
+}
+
 void print_word_ladder(const vector<string>& ladder) {
     if (ladder.empty()) {
         cout << "No word ladder found." << endl;
